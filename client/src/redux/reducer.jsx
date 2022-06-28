@@ -34,7 +34,7 @@ export default function rootReducer(state = initialState, action) {
         case GET_DETAIL:
             return {
                 ...state,
-                countries: action.payload
+                details: action.payload
             };
         case POST_ACTIVITY:
             return {
@@ -43,7 +43,7 @@ export default function rootReducer(state = initialState, action) {
             };
         case FILTER_BY_CONTINENT:
             const ctry = state.countries;
-            const continetFilter = action.payload === All
+            const continetFilter = action.payload === 'All'
                 ? ctry
                 : ctry.filter(c => c.continet === action.payload)
             return {

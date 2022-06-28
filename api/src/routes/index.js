@@ -20,7 +20,7 @@ const infoCountriesDB = async () => {
 
 /* ----------- rutas --------------*/
 
-router.get('/countries', async (req, res) => {
+router.get('/countries', async (req, res, next) => {
 
   const { name } = req.query;
   const infoDB = await infoCountriesDB()
@@ -68,13 +68,14 @@ router.get('/countries', async (req, res) => {
   }
   catch (error) {
     // si no existe se muestra error
-    res.status(404).json({ error: "Upss, el valor ingresado no existe, por favor validar." });
+    //res.status(404).json({ error: "Upss, el valor ingresado no existe, por favor validar." });
+    next(error)
   }
 });
 
-router.get('/countries/:id', async (req, res) => {
- const { id }= req.params;  
-  try {    
+router.get('/countries/:id', async (req, res, next) => {
+  const { id } = req.params;
+  try {
     let idCountry = await Country.findOne({
       where: { id: id, },
       include: Activities,
@@ -84,20 +85,21 @@ router.get('/countries/:id', async (req, res) => {
     // }
     res.status(200).json(idCountry)
   } catch (error) {
-    res.status(404).send('Hubo un error, valida la información.')
+    //res.status(404).send('Hubo un error, valida la información.')
+    next(error)
   }
 });
 
-router.post('/activities', async (req, res) => {
+router.post('/activities', async (req, res, next) => {
   try {
     const { name, difficulty, duration, season, countries } = req.body;
-   /* Creación de una nueva actividad en la base de datos. */
+    /* Creación de una nueva actividad en la base de datos. */
     const newActivities = await Activities.create({
       name,
       difficulty,
       duration,
       season,
-    });    
+    });
     /* Encontrar todos los países que están en la matriz de países que se pasan en el cuerpo de la
     solicitud. */
     const allCountriesSolict = await Country.findAll({
@@ -105,11 +107,12 @@ router.post('/activities', async (req, res) => {
         name: countries,
       },
     });
-    /* Agregar la matriz de países en el objeto newActivity. */    
+    /* Agregar la matriz de países en el objeto newActivity. */
     await newActivities.addCountry(allCountriesSolict);
-     res.status(200).json(newActivities);
+    res.status(200).json(newActivities);
   } catch (error) {
-   res.status(404).send('Actividad exitente, no se puede volver a crear.')
+    // res.status(404).send('Actividad exitente, no se puede volver a crear.')
+    next(error)
   };
 });
 
