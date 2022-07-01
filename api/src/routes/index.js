@@ -28,14 +28,14 @@ router.get('/countries', async (req, res, next) => {
     // validar si existen datos en la bd.
     if (!infoDB.length) {
       /* Obtener los datos de la API y asignarlos a un nuevo objeto. */
-      const allCountriesAPI = await axios.get('https://restcountries.com/v3/all');
+      const allCountriesAPI = await axios.get('http://restcountries.com/v3/all');
 
       const inf = allCountriesAPI.data.map(c => {
         return {
           id: c.cca3,
           name: c.name.common,
           imgFlag: c.flags ? c.flags[0] : 'dato no encontrado',
-          continent: c.continents[0],
+          continent: c.region,
           capital: c.capital ? c.capital[0] : 'dato no encontrado',
           subregion: c.subregion ? c.subregion : 'dato no encontrado',
           area: c.area,

@@ -12,7 +12,7 @@ export const GET_PAGE = 'GET_PAGE';
 
 export const getAllContries = () => {
     return async (dispatch) => {
-        const result = await axios('http://localhost:3001/countries')
+        const result = await axios.get('http://localhost:3001/countries')
         return dispatch({
             type : GET_ALL_COUNTRIES,
             payload: result.data
