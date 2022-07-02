@@ -13,8 +13,8 @@ import {
 const initialState = {
   allCountries: [],
   copyCountries: [],
-  activities: [],
-  details: [],
+  activitiesCreated: [],
+  detail: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -28,17 +28,17 @@ export default function rootReducer(state = initialState, action) {
     case GET_SEARCH_NAME:
       return {
         ...state,
-        copyCountries: action.payload
+        allCountries: action.payload
       };
     case GET_DETAIL:
       return {
         ...state,
-        details: action.payload
+        detail: action.payload
       };
     case POST_ACTIVITY:
       return {
         ...state,
-        activities: action.payload
+        activitiesCreated: action.payload
       };
     case FILTER_BY_CONTINENT:
       const ctry = state.copyCountries;
@@ -52,7 +52,7 @@ export default function rootReducer(state = initialState, action) {
     case FILTER_BY_ACTIVITY:
       let newArr = []
       /* Filtrado de los países por actividad. */
-      state.copyCountries.map(c => c.activities.forEach(e => {
+      state.copyCountries.map(c => c.Activities.forEach(e => {
         if (e.name === action.payload) {
           newArr.push(e)
         }

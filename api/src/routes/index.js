@@ -14,7 +14,9 @@ const { Op } = require("sequelize");
 /* ----------- función controladora --------------*/
 
 const infoCountriesDB = async () => {
-  let getDB = await Country.findAll();
+  let getDB = await Country.findAll({
+    include: Activities
+  });
   return getDB;
 }
 
@@ -28,7 +30,7 @@ router.get('/countries', async (req, res, next) => {
     // validar si existen datos en la bd.
     if (!infoDB.length) {
       /* Obtener los datos de la API y asignarlos a un nuevo objeto. */
-      const allCountriesAPI = await axios.get('http://restcountries.com/v3/all');
+      const allCountriesAPI = await axios.get('https://restcountries.com/v3/all');
 
       const inf = allCountriesAPI.data.map(c => {
         return {

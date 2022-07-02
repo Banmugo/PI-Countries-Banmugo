@@ -5,24 +5,27 @@ import { Link } from 'react-router-dom'
 import { getAllContries, filterContinent, filterActivity, getcantPobl, getOrderAlf } from '../redux/actions'
 import Cards from './Cards'
 import Page from './Page'
+import SearchBar from './SearchBar'
 
 
+// cuando filtro por contient, no me funciona el ord az y poblacion
+// actividades no me filtra aun 
 
 export default function Home() {
 
   const dispatch = useDispatch();
   const allCountries = useSelector(state => state.allCountries);
   const [currentPage, setCurrentPage] = useState(1)
-  const [countriesXPage, setcountriesXPage] = useState(10)
+  const [countriesXPage ] = useState(10)
   const indexLastCountry = currentPage * countriesXPage
   const indexFirstCountry = indexLastCountry - countriesXPage
   const currentCountry = allCountries.slice(indexFirstCountry, indexLastCountry)
-  // const nombreActividad = useSelector((state)=> state.activities)             filtro de actividades
-  // const prueba = nombreActividad.map((e)=> e.name)                            filtro de actividades
+  const nombreActividad = useSelector((state)=> state.activitiesCreated)            //  filtro de actividades
+  const prueba = nombreActividad.map((e)=> e.name)                           //  filtro de actividades
   /* Creación de un array de valores únicos a partir del array `prueba`. */
-  // const unicos = [... new Set(prueba)];               filtro de actividades
-  const [order, setOrder] = useState('')  // cambiar nombres
-  const [, setAZ] = useState('')       // cambiar nombres
+  const unicos = [... new Set(prueba)];                                       // filtro de actividades
+  const [order, setOrder] = useState('')  
+  const [orderAlf, setOrderAlf] = useState('')   
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber)
@@ -35,18 +38,21 @@ export default function Home() {
   function handleCLickRecharge(e) {
     e.preventDefault()
     dispatch(getAllContries())
+    // setCurrentPage(1);
+    // setOrder("")
+    // setOrderAlf("")   
   }
 
   function handlefilterContinent (e){
     dispatch(filterContinent(e.target.value))
   }
 
-  // function handlefilterActivity(e){            filtro de actividades
-  //   dispatch(filterActivity(e.target.value))
-  // }
+  function handlefilterActivity(e){                   // filtro de actividades
+    dispatch(filterActivity(e.target.value))
+  }
   // console.log(unicos)
 
-  // falto entender algo de este 
+  // falto entender algo de este lo del serOrder
   function handlegetcantPobl(e){
     e.preventDefault();
     dispatch(getcantPobl(e.target.value))
@@ -57,13 +63,14 @@ export default function Home() {
   function handlegetOrderAlf(e){
     e.preventDefault(e);
     dispatch(getOrderAlf(e.target.value))
-    setAZ(`Ordenado ${e.target.value}`)
+    setOrderAlf(`Ordenado ${e.target.value}`)
   }
 
   return (
     <div>
       {/*btn para crear actividad  y btn para recargar la pag.*/}
-      <div className='searchbar'>
+      <div >
+        <SearchBar/>
         <Link to='/activities'><button>Crear Actividades</button></Link>
         <button onClick={(e) => { handleCLickRecharge(e) }}>Recargar pagina</button>
       </div>
@@ -72,8 +79,7 @@ export default function Home() {
       </div>
       {/* btn para filtrar x continet */}
       <label>Continent: </label>
-      <select onChange={e => handlefilterContinent(e) } >
-        <option selected={true} disabled="disabled">  --- </option>
+      <select onChange={e => handlefilterContinent(e) } >        
         <option value="All">All Countries</option>
         <option value="Africa">Africa</option>
         <option value="Americas">Americas</option>
@@ -84,18 +90,19 @@ export default function Home() {
       </select>      
 
       {/* btn para filtrar x actividad ---- falta ensayar cuando se pueda crear una actividad*/}
-      {/* {unicos.length === 0 ?
+      {unicos.length === 0 ?
         <p>Crea actividades para filtrarlas</p>
         : <select  onChange={e => handlefilterActivity(e)}>
           {unicos.map((e) => (
             <option value={e} > {e} </option>
           ))}
         </select>
-      } */}
+      }
 
       {/* btn para ordenar AZ y ZA */}
       <label >Organize: </label>
       <select onChange ={e => handlegetOrderAlf(e)}>
+        /* Creando una opción que está seleccionada y deshabilitada. */
         <option selected={true} disabled="disabled">     ---      </option>
         <option value="A-Z">A-Z</option>
         <option value="Z-A">Z-A</option>
@@ -105,8 +112,8 @@ export default function Home() {
       <label >Poblation: </label>
       <select onChange ={e => handlegetcantPobl(e)}>
         <option selected={true} disabled="disabled">     ---      </option>
-        <option value='Mayor a Menor'>Mayor a Menor Poblacion</option>
         <option value='Menor a Mayor'>Menor a Mayor Poblacion</option>
+        <option value='Mayor a Menor'>Mayor a Menor Poblacion</option>
       </select>
 
       <Page

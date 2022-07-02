@@ -24,22 +24,24 @@ export const getSearchName = (name) => {
     return  (dispatch) => {
         try {
             return axios.get(`http://localhost:3001/countries?name=${name}`)
-            .then(r => dispatch({type: GET_SEARCH_NAME, payload: r.data
+            .then(rta => dispatch({type: GET_SEARCH_NAME, payload: rta.data
             }))            
         } catch (error) {
-            console.log(error);            
+          console.log(error);            
         }
     }
 };
 
 export const getDetail = (id) => {
-    return (dispatch)=>{
+    return async (dispatch)=>{
         try {
-            return fetch(`http://localhost:3001/countries/${id}`)
-            .then(r => r.json())
-            .then(r => {
-                dispatch({type: GET_DETAIL, payload: r.data})
-            })            
+            const r = await axios.get(`http://localhost:3001/countries/${id}`)
+            return dispatch({type: GET_DETAIL, payload: r.data})
+            // return fetch(`http://localhost:3001/countries/${id}`)
+            // .then(r => r.json())
+            // .then(r => {
+            //     dispatch({type: GET_DETAIL, payload: r.data})
+            // })            
         } catch (error) {
             console.log(error);
         }

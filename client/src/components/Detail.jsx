@@ -8,6 +8,7 @@ import { getDetail } from '../redux/actions'
 function Detail(props) {
     const country = useSelector((state) => state.detail)
     const dispatch = useDispatch();
+    
 
     useEffect(() => {
         dispatch(getDetail(props.match.params.id))
@@ -18,7 +19,7 @@ function Detail(props) {
             {country ?
                 <div>
                     <h1>{country.name}</h1>
-                    <img src={country.imgFlag} alt='Imag no Found' />
+                    <img src={country.imgFlag} alt='Imag no Found' width='250' height='250' />
                     <h2>Continente: {country.continent}</h2>
                     <h3>Capital: {country.capital}</h3>
                     <h4>Subregion: {country.subregion}</h4>

@@ -1,10 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getSearchName } from '../redux/actions';
 
 
 export default function SearchBar() {
-    return (
+    const dispatch = useDispatch()
+    const [name, setName] = useState('')
+
+    function handleInput(e){
+        e.preventDefault(e)
+        setName(e.target.value)
         
-        <div> se supone que debe ser el boton de busqueda :/</div>
+    }
+
+    function handleSubmit(e){
+        e.preventDefault(e)
+        dispatch(getSearchName(name))
+             
+    }
+
+    return (
+        <div>
+            <input type="text" placeholder='Ej: Colombia' onChange={e => handleInput(e)}/>
+            <button type="submit" onClick={e => handleSubmit(e)}>Buscar</button>
+        </div>
     )
 }
