@@ -3,8 +3,9 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  margin: auto;
+  margin: auto;   
 }
+
 .h1 {
   background: url('https://c4.wallpaperflare.com/wallpaper/450/626/321/abstracto-azul-gots-luces-wallpaper-preview.jpg');
   -webkit-background-clip: text;

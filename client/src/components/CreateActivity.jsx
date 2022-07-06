@@ -77,10 +77,14 @@ export default function CreateActivity() {
   }
 
   function handleSelectCountries(e) {
-    setInput({
-      ...input,
-      countries: [...input.countries, e.target.value]
-    })
+    if(input.countries.includes(e.target.value)){
+      return 
+    } else {
+      setInput({
+        ...input,
+        countries: [...input.countries, e.target.value]
+      })
+    }
   }
 
   function handleDelete(e) {
@@ -190,13 +194,16 @@ export default function CreateActivity() {
           </form>
           <div className='Countries'>
         <div className='posbtn'>
-            {input.countries.map(c => {
-              return (
-                <div className='Contries' key={c} >
-                  <p >{c}</p>
-                  <button className='botnX' onClick={() => handleDelete(c)} >x</button>
-                </div>
-              )
+            {input.countries.map(c => { 
+                          
+                return (
+                  <div className='Contries' key={c} >                  
+                      <div>
+                      <p >{c}</p>
+                      <button className='botnX' onClick={() => handleDelete(c)} >x</button>
+                      </div>                  
+                  </div>
+                )
             }
             )}
           </div>

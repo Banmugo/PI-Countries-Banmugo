@@ -59,6 +59,7 @@ function Detail(props) {
                     }
                 </div>
             </div>
+            <div></div>
         </div>
     )
 }
