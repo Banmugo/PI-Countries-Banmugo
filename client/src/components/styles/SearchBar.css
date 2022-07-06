@@ -1,0 +1,29 @@
+.btnSearch {
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border: 1px solid #3498db;
+    background-color: transparent;
+    font-size: 15px;
+    color: #5396b1;
+    padding: 7px 10px;
+    border-radius: 7px;
+    position: relative;
+    display: inline-block;
+}
+
+.btnSearch:hover {
+    background-color: #0f285850;  
+    color: white;
+    cursor: pointer;
+}
+
+.input{
+    border: 1px solid #3498db;
+    background-color:  #0f285850;
+    font-size: 15px;
+    color: #f4f9fc;
+    padding: 7px 10px;
+    border-radius: 7px;
+    position: relative;
+    display: inline-block;
+}

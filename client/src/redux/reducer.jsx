@@ -7,7 +7,7 @@ import {
   FILTER_BY_ACTIVITY,
   GET_ORDER_ALF,
   GET_CANTD_POBLATION,
-  GET_PAGE,
+  GET_ACTIVITIES,
 } from './actions';
 
 const initialState = {
@@ -38,7 +38,6 @@ export default function rootReducer(state = initialState, action) {
     case POST_ACTIVITY:
       return {
         ...state,
-        activitiesCreated: action.payload
       };
     case FILTER_BY_CONTINENT:
       const ctry = state.copyCountries;
@@ -50,11 +49,10 @@ export default function rootReducer(state = initialState, action) {
         allCountries: continetFilter
       };
     case FILTER_BY_ACTIVITY:
-      let newArr = []
-      /* Filtrado de los países por actividad. */
+      let newArr = []     
       state.copyCountries.map(c => c.Activities.forEach(e => {
         if (e.name === action.payload) {
-          newArr.push(e)
+          newArr.push(c)
         }
       }))
 
@@ -62,8 +60,16 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         allCountries: newArr
       };
+    // case GET_ORDER_ALF:
+      // let order = action.payload === 'A-Z' 
+      // ? state.copyCountries.sort((a,b) => a.name - b.name) 
+      // : state.copyCountries.sort((a,b) => b.name - a.name)
+      // return{
+      //     ...state,
+      //     allCountries: order
+      // };   
     case GET_ORDER_ALF:
-      const organized = state.copyCountries;
+      const organized = state.allCountries;
       const order = organized.sort(function (a, b) {
         if (action.payload === 'A-Z') {
           if (a.name < b.name) {
@@ -88,42 +94,20 @@ export default function rootReducer(state = initialState, action) {
 
       return {
         ...state,
-        copyCountries: order
-      };
+        allCountries: order
+      };  
     case GET_CANTD_POBLATION:
-      /* Un operador ternario. Es una forma abreviada de una declaración if/else. */
-      // let orderPopulation = action.payload === 'Menor a Mayor' ? state.copyCountries.sort((a,b) => a.population - b.population) :
-      //   state.copyCountries.sort((a,b) => b.population - a.population)
-      //   return{
-      //       ...state,
-      //       allCountries: orderPopulation
-      //   }
-      let orderPopulation =
-        action.payload === "Menor a Mayor"
-          ? state.copyCountries.sort((a, b) => {
-            if (a.population > b.population) {
-              return 1;
-            } else if (b.population > a.population) {
-              return -1;
-            }
-            return 0;
-          })
-          : state.copyCountries.sort((a, b) => {
-            if (a.population > b.population) {
-              return -1;
-            } else if (b.population > a.population) {
-              return 1;
-            }
-            return 0;
-          });
+     
+      let orderPopulation = action.payload === 'Menor a Mayor' ? state.allCountries.sort((a,b) => a.population - b.population) :
+        state.allCountries.sort((a,b) => b.population - a.population)
+        return{
+            ...state,
+            allCountries: orderPopulation
+        };      
+    case GET_ACTIVITIES:
       return {
         ...state,
-        copyCountries: orderPopulation,
-      };
-    case GET_PAGE:
-      return {
-        ...state,
-        page: action.payload
+        activitiesCreated: action.payload
       };
 
     default:

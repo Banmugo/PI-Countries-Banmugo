@@ -8,7 +8,7 @@ export const FILTER_BY_CONTINENT = 'FILTER_BY_CONTINENT';
 export const FILTER_BY_ACTIVITY = 'FILTER_BY_ACTIVITY';
 export const GET_ORDER_ALF = 'GET_ORDER_ALF';
 export const GET_CANTD_POBLATION = 'GET_CANTD_POBLATION';
-export const GET_PAGE = 'GET_PAGE';
+export const GET_ACTIVITIES = 'GET_ACTIVITIES';
 
 export const getAllContries = () => {
     return async (dispatch) => {
@@ -75,11 +75,13 @@ export const getcantPobl = (payload)=>{
     return { type : GET_CANTD_POBLATION, payload }
 };
 
-export const getPage = (payload)=>{
-    return { type : GET_PAGE, payload }
+export const getActivities = ()=>{
+    return async (dispatch) => {
+        try {
+           const r = await axios('http://localhost:3001/activities')
+           return dispatch({type: GET_ACTIVITIES, payload: r.data})              
+        } catch (error) {
+            console.log(error)
+        }
+    }
 };
-
-
-
-
-

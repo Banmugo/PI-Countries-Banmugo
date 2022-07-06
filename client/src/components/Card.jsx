@@ -1,15 +1,13 @@
 import React from "react";
+import './styles/Card.css'
 
 
-export default function Card(props) {    
+export default function Card(props) {
     return (
-        <div>
-            <img src={props.imgFlag} alt="Flag" width='150' height='150' />
-            <h3>{props.name}</h3>
-            <h4>{props.ontinent}</h4>
-            {/* <div>
-                    <button>Details</button>
-            </div> */}
+        <div className="Card">
+            <img className="img" src={props.imgFlag} alt="Flag" width='130' height='100' />
+            <h4 className=".h4">{props.name}</h4>
+            <h5 className=".h5">{props.continent}</h5>
         </div>
     )
 };

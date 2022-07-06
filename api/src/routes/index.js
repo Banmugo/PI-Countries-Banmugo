@@ -15,7 +15,7 @@ const { Op } = require("sequelize");
 
 const infoCountriesDB = async () => {
   let getDB = await Country.findAll({
-    include: Activities
+    include: Activities,
   });
   return getDB;
 }
@@ -41,7 +41,9 @@ router.get('/countries', async (req, res, next) => {
           capital: c.capital ? c.capital[0] : 'dato no encontrado',
           subregion: c.subregion ? c.subregion : 'dato no encontrado',
           area: c.area,
-          population: c.population,
+          population: c.population, 
+          maps: c.maps.openStreetMaps,         
+          Activities: c.Activities,          
         }
       })
 
@@ -116,6 +118,15 @@ router.post('/activities', async (req, res, next) => {
     // res.status(404).send('Actividad exitente, no se puede volver a crear.')
     next(error)
   };
+
+  router.get('/activities', async (req,res, next)=>{
+    try {
+      let activityCreate = await Activities.findAll({})
+      res.status(200).json(activityCreate)      
+    } catch (error) {
+      next(error)
+    };
+    })
 });
 
 

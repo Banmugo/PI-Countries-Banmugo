@@ -12,14 +12,13 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <h1>Henry Countries</h1>
         <Switch>
           <Route exact path='/' component={ LandingPage } ></Route>
-          <Route exact path='/home' component={ Home } ></Route>
-          <Route exact path='/activities' component={CreateActivity} ></Route>
-          <Route exact path='/detail/:id' component={Detail} ></Route>
+          <Route  path='/home' component={ Home } ></Route>
+          <Route  path='/activities' component={CreateActivity} ></Route>
+          <Route  path='/detail/:id' component={Detail} ></Route>
           {/* falta organizar esta ultima  linea */}
-          <Route exact path='*' >PAG no existe</Route>  
+          <Route  path='*' >PAG no existe</Route>  
         </Switch>
       </div>
     </BrowserRouter>

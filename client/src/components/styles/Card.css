@@ -1,0 +1,33 @@
+.Card {   
+    background-color: transparent;
+    margin: 15px;
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;   
+}
+
+.Card:hover {
+    animation: pulsate 1s ease-in-out;
+    background-color: #12356930;
+    padding: 20px 24px;      
+    top: 0;
+    bottom: 0;
+}
+
+
+@keyframes pulsate {
+    0% {
+        box-shadow: 0 0 25px #266f8340, 0 0 50px #3c73bb50;
+    }
+}
+.img {
+    border-radius: 10%;
+}
+.h4{   
+    color: #150a7e;
+}
+.h5{    
+    color: #4d568f;
+}

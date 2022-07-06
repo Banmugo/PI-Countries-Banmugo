@@ -1,0 +1,36 @@
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+ul.pagination li {
+    display: inline;
+}
+
+.buttonPAge{
+    margin: 5px;
+    cursor: pointer;
+    background: transparent;
+    display: inline-block;
+    color: #f4f9fc;;
+    text-decoration: none;
+    padding: 2px 5px;
+    border: 1px solid #1b5074;
+    border-radius: 5px;
+}
+.buttonPAge:hover{
+    animation: pulsate 1s ease-in-out;
+    color: #000000;
+    background-color: #266f8390;
+}
+.buttonPAge:active{
+    background-color: rgb(150, 49, 49);
+}
+
+@keyframes pulsate {
+    0%{
+        box-shadow: 0 0 25px #266f83, 0 0 50px #3c73bb;
+    }
+}
+

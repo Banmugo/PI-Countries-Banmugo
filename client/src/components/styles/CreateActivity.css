@@ -1,0 +1,94 @@
+.cajaCreate{
+    background-image: url('../../assets/CreateActv2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: auto;    
+  }
+  
+  .form {
+    margin: 0 auto; 
+    width: 500px; 
+    background-color: #ccced470; 
+    padding: 2px; 
+    border-radius: 10px; 
+ }
+
+ .h2 {  
+  color: rgb(0, 68, 255);
+}
+
+.input {
+  padding: 5px; 
+}
+
+.labelForm {
+  display: block; 
+  padding: 5px; 
+}
+.selectForm{
+  display: inline;
+  margin: 5px;
+  border: 1px solid #1b5074;
+  background-color: #0f285830;
+  font-size: 15px;
+  color: #f4f9fc;
+  padding: 3px 7px;
+  border-radius: 7px;
+  position: relative;
+}
+.selectForm:hover {
+  cursor: pointer;
+  background-color: #e3e8f190;  
+  color: white;
+  cursor: pointer;
+}
+
+.Contries{
+  background-color: #042d7970;
+  margin: 5px;  
+  border-radius: 9px;
+  width: auto;
+  height: auto;
+  
+}
+
+.btnForm{
+  margin-top: 20px; 
+  width: 40%;
+  margin-left: 15%;
+  background-color: rgb(96, 160, 219);
+  border-radius: 7px;
+  cursor: pointer;
+}
+.btnForm:hover{
+  background-color: #125751;
+  color: black;
+}
+
+
+.botnX{
+  cursor: pointer;
+  background-color: #c5181850;
+  border: transparent;
+  color: black;  
+  border-radius: 5px;
+  position: center;
+
+}
+.botnX:hover{
+  background-color: red;
+}
+.posbtn{
+  display: flex;  
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+
+
+  
+  

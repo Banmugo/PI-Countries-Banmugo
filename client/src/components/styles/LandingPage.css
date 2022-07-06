@@ -1,0 +1,66 @@
+.cajaLanding {  
+  background-image: url('../../assets/mundo\ 3.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: auto;
+}
+
+.containerLanding {
+  width: 80%;
+  height: 100vh;
+  margin: auto;
+}
+
+
+.contenitdoContainer {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.h1 {
+  background: url('https://c4.wallpaperflare.com/wallpaper/450/626/321/abstracto-azul-gots-luces-wallpaper-preview.jpg');
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ov-btn-grow-skew-reverse {
+  cursor: pointer;
+  border: 1px solid #3498db;
+  background-color: transparent;
+  font-size: 19px;
+  color: #5396b1;
+  padding: 16px 20px;
+  border-radius: 9px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.ov-btn-grow-skew-reverse:hover {
+  color: #fff;
+}
+
+.ov-btn-grow-skew-reverse::after {
+  content: "";
+  background: #3f95db;
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  left: -20%;
+  right: -20%;
+  top: 0;
+  bottom: 0;
+  transform: skewX(45deg) scale(0, 1);
+  transition: all 0.3s ease;
+}
+
+.ov-btn-grow-skew-reverse:hover::after {
+  transition: all 0.3s ease-out;
+  transform: skewX(45deg) scale(1, 1);
+}

@@ -1,0 +1,62 @@
+.cajaHome {
+  background-image: url('../../assets/mundohome\ 2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: auto;
+}
+.h1 {
+  background: url('https://c4.wallpaperflare.com/wallpaper/450/626/321/abstracto-azul-gots-luces-wallpaper-preview.jpg');
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btnHome {
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  border: 1px solid #3498db;
+  background-color: transparent;
+  font-size: 15px;
+  color: #5396b1;
+  padding: 7px 10px;
+  border-radius: 7px;
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.btnHome:hover {
+  background-color: #0f285850;
+  color: white;
+}
+
+.labelHome {
+  display: inline;
+  margin: 5px;
+  border: 1px solid #1b5074;
+  background-color: #0f285830;
+  font-size: 15px;
+  color: #f4f9fc;
+  padding: 3px 7px;
+  border-radius: 7px;
+  position: relative;
+}
+
+.selectHome{
+  display: inline;
+  margin: 5px;
+  border: 1px solid #1b5074;
+  background-color: #0f285830;
+  font-size: 15px;
+  color: #f4f9fc;
+  padding: 3px 7px;
+  border-radius: 7px;
+  position: relative;
+}
+.selectHome:hover {
+  cursor: pointer;
+  background-color: #e3e8f190;  
+  color: white;
+  cursor: pointer;
+}

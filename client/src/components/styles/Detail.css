@@ -1,0 +1,66 @@
+.cajaDetail {
+  background-image: url('../../assets/brujula\ detalle.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: auto;
+}
+
+.containerDetail {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 40px;
+}
+
+
+.contenidoDetail {
+  width: 100%;
+  margin: auto;
+  position: relative;
+
+}
+
+.img {
+  border-radius: 10px;
+}
+
+.h1 {
+  background: url('https://c4.wallpaperflare.com/wallpaper/450/626/321/abstracto-azul-gots-luces-wallpaper-preview.jpg');
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text{
+  color: rgb(6, 41, 29);
+}
+
+.details {
+  margin: 10px;
+  background-color: #041e2230;
+  color: black;
+  margin: 15px;
+  position: relative;
+  width: 300px;
+  height: 250px;
+  border-radius: 20px;
+
+}
+
+.actividad {
+  margin: 10px;
+  background-color: #bddce050;
+  color: black;
+  margin: 15px;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  font-size: 18px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+}
