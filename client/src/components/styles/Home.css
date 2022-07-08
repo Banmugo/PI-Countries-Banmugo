@@ -3,7 +3,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  margin: auto;   
+  margin: auto;  
+  border: 1px solid transparent; 
 }
 
 .h1 {

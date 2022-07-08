@@ -47,6 +47,10 @@ export default function Home() {
     // setOrderAlf('')
   }
 
+  const seteador = function searchBar(){
+    setCurrentPage(1)
+  }
+
   function handlefilterContinent(e) {
     dispatch(filterContinent(e.target.value))
   }
@@ -70,17 +74,12 @@ export default function Home() {
 
   return (
     <div className='cajaHome'>
-        <div>
-          <h1 className='h1'> COUNTRY INFORMATION</h1>
-          </div>
-      <div>
-
-        <br />
-        <div>
-          <div>
-            {/*btn para crear actividad  y btn para recargar la pag.*/}
-            <SearchBar />
+          <h1 className='h1'> COUNTRY INFORMATION</h1>  
+     
+          <div >
+            <SearchBar  seteador={seteador} />
             <div>
+            
               <Link to='/activities'><button className='btnHome'>Crear Actividades</button></Link>
             </div>
 
@@ -90,7 +89,7 @@ export default function Home() {
             <br />
             <div>
 
-              {/* btn para filtrar x actividad ---- falta ensayar cuando se pueda crear una actividad*/}
+             
               <label className='labelHome'>Activities: </label>
               {activityName.length === 0 ?
                 <p>Crea actividades para filtrarlas</p>
@@ -103,7 +102,7 @@ export default function Home() {
                   )}
                 </select>
               }
-              {/* btn para filtrar x continet */}
+              
               <label className='labelHome'>Continent: </label>
               <select className='selectHome' onChange={e => handlefilterContinent(e)} >
                 <option value="All">All Countries</option>
@@ -116,7 +115,6 @@ export default function Home() {
               </select>
 
 
-              {/* btn para ordenar AZ y ZA */}
               <label className='labelHome'>Alphabetical Order: </label>
               <select className='selectHome' onChange={e => handlegetOrderAlf(e)}>
 
@@ -125,7 +123,7 @@ export default function Home() {
                 <option value="Z-A">Z-A</option>
               </select>
 
-              {/* btn para ordenar > y < poblacion */}
+              
               <label className='labelHome'>Poblation: </label>
               <select className='selectHome' onChange={e => handlegetcantPobl(e)}>
                 <option value='' >     ---      </option>
@@ -143,14 +141,13 @@ export default function Home() {
               />
             </div>
 
+
+          </div>  
             <div className='Cards'>
               <Cards
                 currentCountry={currentCountry} />
             </div>
-
-          </div>
-        </div>
-      </div>
+      
     </div>
   )
 }

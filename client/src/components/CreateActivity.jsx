@@ -117,8 +117,8 @@ export default function CreateActivity() {
   return (
     <div className='cajaCreate'>
       <div>
-        <div><Link to='/home'>
-          <button>Volver al Home ...</button>
+        <div ><Link to='/home'>
+          <button className='btns'>Volver al Home ...</button>
         </Link>
         </div>
         <h2 className='h2'>Create an Activity</h2>

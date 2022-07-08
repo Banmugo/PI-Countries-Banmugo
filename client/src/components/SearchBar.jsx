@@ -5,7 +5,7 @@ import { getSearchName } from '../redux/actions';
 import'./styles/SearchBar.css'
 
 
-export default function SearchBar() {
+export default function SearchBar({seteador}) {
     const dispatch = useDispatch()
     const [name, setName] = useState('')
 
@@ -17,6 +17,7 @@ export default function SearchBar() {
 
     function handleSubmit(e){
         e.preventDefault(e)
+        seteador()
         dispatch(getSearchName(name))
              
     }

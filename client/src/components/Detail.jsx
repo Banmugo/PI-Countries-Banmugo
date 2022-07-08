@@ -18,9 +18,9 @@ function Detail(props) {
     return (
         <div className='cajaDetail'>
             <div >
-                <div className='btn' >
+                <div >
                     <Link to='/home'>
-                        <button>Home</button>
+                        <button className='btns'>Home</button>
                     </Link>
                 </div>
 
